@@ -1,0 +1,7 @@
+
+-----------------------------------------------------------------
+  pg_upgrade run on Wed Oct  2 16:34:56 2024
+-----------------------------------------------------------------
+
+check for "/usr/local/opt/postgresql@14/bin" failed: No such file or directory
+

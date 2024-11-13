@@ -1,0 +1,90 @@
+body {
+    background-color: #FDECCB;
+}
+.image1, .image2 {
+    position: absolute;
+    width: 15%; /* 画像のサイズを調整 */
+    z-index: 2; /* ボックスの背面に配置 */
+}
+.image1 {
+    position: fixed;
+    top: 12vh; /* 上からの位置 */
+    left: 5%; /* 左からの位置 */
+}
+.image2 {
+    position: fixed;
+    bottom: 12vh; /* 下からの位置 */
+    right: 5%; /* 右からの位置 */
+}
+.boxs1 {
+    position: fixed;
+    top: 10vh;
+    width: 100%;
+    height: 80vh; /* 高さを調整 */
+    overflow: hidden; /* はみ出た部分を隠す */
+    display: flex; /* 中央配置 */
+    justify-content: center;
+    align-items: center;
+    color: #9E867C;
+    text-align: center;
+}
+.box {
+    position: relative; /* 子要素を絶対配置するための基準 */
+    width: 70%;
+    height: 70%; /* 高さを調整 */
+    background-color: #64BCE3;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 影 */
+    overflow: hidden; /* はみ出た部分を隠す */
+    transform: skew(-3deg, 1deg); /* X軸に20度、Y軸に10度傾ける */
+    border: solid #9E867C 1px;
+}
+.card-body {
+    position: absolute;
+    background-color: #ffffff;
+    width: 70%;
+    height: 70%; /* 高さを調節 */
+    padding: 20px; /* 内部の余白 */
+    top: 50%; /* 垂直方向の中央に配置 */
+    left: 50%; /* 水平方向の中央に配置 */
+    transform: translate(-50%, -50%); /* 自身の中心に基づいて調整 */
+    z-index: 1; /* z-indexで重なり順を制御 */
+    border: solid #9E867C 1px;
+}
+.card-title{
+    font-size: 3vw;
+    width: 100%;
+    padding: 4vh;
+}
+.card-text{
+    margin: 4vh;
+}
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 2vh;
+    right: 1.5vw;
+    align-items: center;
+    /* background-color: #FCCF74; */
+    width: 25vw;
+    height: 10vh;
+
+}
+.buttons a,
+.buttons button {
+    display: flex;               /* フレックスコンテナにする */
+    justify-content: center;     /* 水平方向の中央揃え */
+    align-items: center;         /* 垂直方向の中央揃え */
+    border: solid #9E867C 1px;
+    background-color: #ffffff;
+    box-shadow: 0.6vh 0.4vw #64BCE3;
+    width: 8vw;
+    height: 6vh;
+    text-decoration: none;       /* aタグの下線を消す（必要に応じて） */
+}
+
+/* hover効果 */
+.buttons a:hover,
+.buttons button:hover {
+    opacity: 0.7;
+}

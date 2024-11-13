@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{% static 'css/base.css' %}" rel="stylesheet"> 
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <a href="{% url 'search_app:search_view' %}">TOP</a>
+            <a href="{% url 'search_app:product_create' %}">作成</a>
+            {% if user.is_authenticated %}
+                <!-- ログインしている場合はログアウトボタンを表示 -->
+                <form action="{% url 'accounts_app:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">ログアウト</button>
+                </form>
+            {% else %}
+                <!-- ログインしていない場合はログインボタンを表示 -->
+                <a href="{% url 'accounts_app:login' %}"><button>ログイン</button></a>
+            {% endif %}
+
+            <a href="{% url 'search_app:cart_detail' %}"><button>カート</button></a>
+
+            <div class="hamburger-menu" id="menu-toggle">
+                <p>メニュー</p>
+                <!-- <img src="{% static 'serch_app/images/検索用の虫眼鏡アイコン素材のコピー.png' %}" alt="" style="width: 13%;"> -->
+            </div>
+
+            <nav id="menu">
+                <div class="close-button" id="close-menu" >
+                    <p>閉じる</p>
+                    <!-- <img src="{% static 'serch_app/images/細いバツのアイコン.png' %}" alt=""> -->
+                </div>
+                <form method="get">
+                    {{ form.as_p }}
+                    <div class="search_contents">
+                        <label for="category">カテゴリ:</label>
+                        <select name="category">
+                            <option value="">すべて</option>
+                            <option value="本">本</option>
+                            <option value="電子機器">電子機器</option>
+                        </select>
+                    </div>
+                    <div class="search_contents">
+                        <label for="min_price">最低価格:</label>
+                        <input type="number" name="min_price" min="0"><br>
+                    </div>
+                    <div class="search_contents">
+                        <label for="max_price">最高価格:</label>
+                        <input type="number" name="max_price" min="0">
+                    </div>
+                    <div class="search_contents">
+                        <label for="sort">並び替え:</label>
+                        <select name="sort">
+                            <option value="name">名前順</option>
+                            <option value="price_asc">価格が安い順</option>
+                            <option value="price_desc">価格が高い順</option>
+                        </select>
+                    </div>
+                    <button type="submit">検索</button>
+                </form>
+            </nav>
+        </header>
+        
+
+
+        {% block content %}
+        {% endblock content %}
+
+        <script src="{% static 'js/search.js' %}"></script>
+
+    </body>
+</html>

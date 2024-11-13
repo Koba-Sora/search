@@ -1,0 +1,7 @@
+<h2>{{ name }}  さんの Cart</h2>
+<ul>
+    {% for item in cart_items %}
+        <li>{{ item.product.name }} / {{ item.quantity }}個 / {{ item.total_price | floatformat:0 }}円</li>
+    {% endfor %}
+</ul>
+<p>合計金額: {{ total_price | floatformat:0 }}円</p>
