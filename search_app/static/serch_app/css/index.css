@@ -1,0 +1,127 @@
+.header_homes,#menu-toggle{
+    display: none;
+}
+
+.homes-section{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0%;
+    left: 0%;
+    overflow: hidden;
+}
+
+.square_center{
+    width: 60vh;
+    height: 50vh;
+    background: black;
+    border: black solid 2px;
+    position: absolute;
+    top: 55%; /* 親要素の50%の位置 */
+    left: 50%; /* 親要素の50%の位置 */
+    transform: translate(-50%, -50%); 
+    z-index: 50;
+}
+#menu {
+    top: 55vh; /* index画面では通常より少し高めに設定 */
+}
+.index-home{
+    font-size: 6vw;
+    position: absolute;
+    color: black;
+    top: 20vh;
+    left: 28vw;
+    font-family: 'Academy Engraved LET', serif;
+}
+.index-search{
+    display: none;
+    font-size: 6vw;
+    position: absolute;
+    color: black;
+    top: 20vh;
+    left: 28vw;
+    font-family: 'Academy Engraved LET', serif;
+}
+
+
+.bottons{
+    display: flex;
+    flex-direction: column;  /* 縦に並べる */
+    justify-content: center;  /* 縦の中央に配置 */
+    align-items: center;  /* 横の中央に配置 */
+    height: 100%;  /* 親要素の高さに合わせる */
+    text-align: center;  /* テキストを中央に揃える */
+
+}
+.div_in_btn {
+    display: inline-block;
+    padding: 10px 20px;  /* ボタンのパディング */
+    color: white;
+    font-family: 'Academy Engraved LET', serif;  /* フォントの設定 */
+    font-size: 6vh;
+    background-color: black;  /* 背景色 */
+    text-decoration: none;  /* リンクの下線を消す */
+    text-align: center;
+    cursor: pointer;  /* カーソルがポインターになる */
+    position: relative;  /* 下線の位置を調整するためにpositionをrelativeに設定 */
+    margin: 2vh;
+}
+
+.div_in_btn::after {
+    content: '';  /* 擬似要素の内容を空に設定 */
+    position: absolute;  /* 擬似要素をボタンの下に配置 */
+    bottom: 0;  /* ボタンの下に線を配置 */
+    left: 0;
+    width: 0;  /* 初期状態では線を表示しない */
+    height: 2px;  /* 線の太さ */
+    background-color: white;  /* 線の色 */
+    transition: width 0.3s ease;  /* スムーズにアニメーション */
+}
+
+/* ボタンがホバーされたときに、下線を広げる */
+.div_in_btn:hover::after {
+    width: 100%;  /* ホバー時に線がボタン全体の幅に広がる */
+}
+
+.square_2{
+    width: 20vw;
+    height: 55vh;
+    border: solid grey 1px;
+    position: absolute;
+    top: 15vh;
+    left: 5vw;
+    z-index: 10;
+
+}
+.square_3{
+    width: 40vw;
+    height: 40vh;
+    background-color: rgb(152, 152, 152);
+    /* border: solid grey 1px; */
+    position: absolute;
+    top: 0vh;
+    right: 0vw;
+    z-index: 1;
+
+}
+.square_4{
+    width: 30vw;
+    height: 40vh;
+    background-color: rgba(88, 88, 88, 0.157);
+    /* border: solid grey 1px; */
+    position: absolute;
+    bottom: 1.5vh;
+    left: 15vw;
+    z-index: -1;
+
+}
+.square_5{
+    width: 12vw;
+    height: 12vw;
+    /* background-color: peru; */
+    border: solid grey 1px;
+    position: absolute;
+    bottom: 10vh;
+    right: 18vw;
+    z-index: -1;
+}

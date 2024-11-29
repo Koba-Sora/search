@@ -1,0 +1,82 @@
+/* body{
+    overflow: hidden;
+
+} */
+.page_name{
+    margin-top: 12vh;
+    font-size: 6vh;
+    font-family: 'Academy Engraved LET', serif;
+    text-align: center;
+}
+.product_custom{
+    width: 80vw;
+    /* height: 62vh; */
+    margin: auto;
+    border: solid black 1px;
+    margin-bottom: 25vh;
+
+}
+.product_custom form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: relative;
+    padding: 4vh 3vw 2vh 1vh;
+}
+.left, .rigth{
+    width: 50%;
+    height: 90%;
+    flex-direction: column;      /* 子要素を縦方向に並べる */
+    justify-content: space-between;
+    
+}
+.form-group{
+    display: flex;
+    font-size: 1h;
+    margin: auto;
+    margin-bottom: 3vh;    
+}
+
+.form-group label{
+    display: block;
+    margin: 1vh 1vw;
+    width: 30%;
+    text-align: center;
+    margin-top: 2vh;
+}
+.form-group input, .form-group textarea, .form-group select{
+    border: solid black 1px;
+    padding: 1vh;
+    text-align: left;
+    margin: 1vh;
+    width: 70%;
+}
+.img_label input{
+    border: none;
+    width: 85%;
+    margin-left: 0;
+    
+    
+}
+.buttons{
+    position: absolute;
+    bottom: -8vh;
+    left:50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center;  
+    gap: 5vw;
+}
+.buttons .btn{
+    text-align: center;
+    padding: 0.9vh 1vw 0.3vh;
+    font-size: 2vh;
+    padding-bottom: 1vh;
+    transition: border 0.3s ease-in-out;
+    border:black solid 1px ;
+}
+.buttons .btn:hover{
+    background-color: black;
+    color: white;
+    /* opacity: 0.1; */
+}

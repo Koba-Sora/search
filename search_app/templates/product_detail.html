@@ -1,39 +1,104 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'serch_app/css/detail.css' %}">
+
+{% endblock  %}
+
 {% block content %}
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>商品詳細</title>
 
-<link rel="stylesheet" href="{% static 'serch_app/css/reset.css' %}">
-<link rel="stylesheet" href="{% static 'serch_app/css/detail.css' %}">
-</head>
-<body>
-    <!-- <img src="{% static 'serch_app/images/土星、木星のアイコン.png' %}" class="image1">
-    <img src="{% static 'serch_app/images/火星人のフリーイラスト2.png' %}" class="image2"> -->
-    <div class="boxs1">
-        <div class="box"></div>
-        <div class="card-body">
-            <h2 class="card-title">{{ product.name }}</h2>
-            <p class="card-text">{{ product.description }}</p>
-            <p class="card-text"><strong>{{ product.price|floatformat:0|intcomma }}円</strong></p>
+    {% if product.user == request.user %}
+        <div class="top_btn">
+            <a href="{% url 'search_app:product_update' product.pk %}">編集</a>
+
             
-            <!-- ボタンの配置 -->
-            <div class="buttons">
-                {% if product.user == recuest.user %}
-                    <a href="{% url 'search_app:product_update' product.pk %}" class="btn btn-secondary">編集</a>
-                    <form action="{% url 'search_app:product_delete' product.pk %}" method="POST" onsubmit="return confirm('本当に削除しますか?');">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">削除</button>
-                    </form>
-                {% endif %}
-                <a href="{% url 'search_app:add_to_cart' product.id %}">カートに追加</a>
+            <form action="{% url 'search_app:product_delete' product.pk %}" method="POST" onsubmit="return confirm('本当に削除しますか?');">
+                {% csrf_token %}
+                <button type="submit">削除</button>
+            </form>
+        </div>
+    {% endif %}
 
-                <a href="{% url 'search_app:product_list' %}" class="btn btn-primary">商品一覧に戻る</a> 
+    <section class="detail">
+
+        <div class="left_box">
+            <div class="product_img_list">
+                <!-- クリックで画像を変更 -->
+                <img class="product_img" src="{{ product.img1.url }}" onclick="changeMainImage('{{ product.img1.url }}')">
+                {% if product.img2 %}
+                    <img class="product_img" src="{{ product.img2.url }}" onclick="changeMainImage('{{ product.img2.url }}')">
+                {% endif %}
+                {% if product.img3 %}
+                    <img class="product_img" src="{{ product.img3.url }}" onclick="changeMainImage('{{ product.img3.url }}')">
+                {% endif %}
+            </div>
+        
+            <!-- メイン画像 -->
+            <div id="imageModal" class="modal">
+                <img class="main_img" id="modalImage" src="{{ product.img1.url }}">
             </div>
         </div>
-    </div>
+
+
+        <div class="rigth_box">
+            <div class="inner_box">
+                
+                <h2 class="card-title">{{ product.name }}</h2>
+                <div class="praice_quantity">
+                    <p class="card-text">{{ product.price|floatformat:0|intcomma }}円</p>
+
+                    <p class="card-text">
+                        {% if product.quantity == 0 %}
+                            sold out
+                        {% elif product.quantity <= 10 %}
+                            残り{{ product.quantity }}点
+                        {% else %}
+                            商品の数量:10点以上
+                        {% endif %}
+                    </p>
+                </div>
+
+                <p class="text_title">商品の説明</p>
+                <p class="card-explain">{{ product.description }}</p>
+
+            </div>
+
+                <!-- ボタンの配置 -->
+                <div class="add">
+                    {% if user.is_authenticated %}
+                        <a class="btn-left" href="{% url 'search_app:add_to_cart' product.pk %}">
+                            カートに追加
+                        </a>
+                    {% else %}
+                        <a class="btn-left" href="{% url 'accounts_app:login' %}?next={% url 'search_app:product_detail' product.id %}" >
+                            カートに追加</a>
+                    {% endif %}
+
+                    {% if product_in_likes %}
+                    <div class="btn-rigth">
+                        <form class="btn-inner" action="{% url 'search_app:like_remove_item' like_item.id %}" method="post">
+                            {% csrf_token %}
+                            <button class="btn-inner" type="submit">
+                                <img src="{% static 'images/like-after.png' %}">
+                            </button>
+                        </form>
+                    </div>
+                    {% else %}
+                        {% if user.is_authenticated %}
+                            <form class="btn-rigth" method="post" action="{% url 'search_app:add_to_like' product.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="like-button"><img  src="{% static 'images/like-before.png' %}"></button>
+                            </form>
+                            {% else %}
+                            <a class="btn-rigth" href="{% url 'accounts_app:login' %}?next={% url 'search_app:product_detail' product.id %}" >
+                                <img  src="{% static 'images/like-before.png' %}"></a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+        </div>
+
+    </section>
+    <a href="{% url 'search_app:search_view' %}" class="return_btn">一覧へ戻る</a> 
+    <script src="{% static '/js/detail.js' %}"></script>
 {% endblock content %}

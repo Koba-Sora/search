@@ -1,15 +1,51 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
+{% load static %}
+{% block links %}
+        <link href="{% static '/accounts/css/accounts.css' %}" rel="stylesheet">
+{% endblock links %}
+
+{% block content %}
     <title>アカウント登録</title>
-</head>
-<body>
+
     <h1>アカウント登録</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">登録</button>
-    </form>
-</body>
-</html>
+
+
+<section class="homes-section"> 
+    <div class="square_center">
+        <form class="accounts_form" method="POST">
+            {% csrf_token %}
+            <label for="username">ユーザー名</label>
+            <input type="text" name="username" id="username" required><br>
+    
+            <label for="password1">パスワード</label>
+            <input type="password" name="password1" id="password1" required><br>
+            
+            <label for="password2">パスワード確認用</label>
+            <input type="password" name="password2" id="password2" required><br>
+    
+            <label for="email">e-mail</label>
+            <input type="email" name="email" id="email" required><br>
+
+            <button type="submit">登録</button>
+        </form>
+        
+        <div class="error">
+            {% if form.errors %}
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <p class="accounts-singup">SINGUP</p>        
+    <div class="square_2"></div>
+    <div class="square_3"></div>
+    <div class="square_4"></div>
+    <div class="square_5"></div>
+</section>
+{% endblock %}

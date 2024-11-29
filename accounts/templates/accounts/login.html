@@ -1,19 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>ログイン</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block links %}
+        <link href="{% static '/accounts/css/accounts.css' %}" rel="stylesheet">
+{% endblock links %}
+
+{% block content %}
     <h2>ログイン</h2>
-    <form method="post">
-        {% csrf_token %}
-        <label for="username">ユーザー名:</label>
-        <input type="text" name="username" id="username" required><br>
 
-        <label for="password">パスワード:</label>
-        <input type="password" name="password" id="password" required><br>
 
-        <button type="submit">ログイン</button>
-    </form>
-</body>
-</html>
+<section class="homes-section"> 
+    <div class="square_center">
+        <div class="loginbox">
+            <form class="accounts_form" method="post">
+                {% csrf_token %}
+                <label for="username">ユーザー名</label>
+                <input type="text" name="username" id="username" required><br>
+        
+                <label for="password">パスワード</label>
+                <input type="password" name="password" id="password" required><br>
+        
+                <button type="submit">ログイン</button>
+                <a class="change-signup" href="{% url 'accounts_app:signup' %}">アカウントをお持ちでない方はこちら</a>
+            </form>
+
+        </div>
+        <div class="error">
+            {% if form.errors %}
+            
+            <p>正しいユーザー名とパスワードを入力してください。</p>
+            <p>どちらのフィールドも大文字と小文字は区別されます。</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <p class="accounts-login">LOGIN</p>       
+    <div class="square_2"></div>
+    <div class="square_3"></div>
+    <div class="square_4"></div>
+    <div class="square_5"></div>
+</section>
+{% endblock %}

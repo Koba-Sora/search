@@ -1,0 +1,110 @@
+/* .search_result{
+    margin: 10vh 10vw 12vh ;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start;
+    align-items: stretch;
+    color:black;
+    
+} */
+/* .product{
+    flex: 1 1 calc(25% - 2vh); 
+    width: 30vh;
+    list-style: none;
+    height: 36vh;
+    border: solid gray 1px;
+    margin:2vh auto;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+} */
+
+
+.search_result {
+    margin: 10vh 10vw 12vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* 自動で4列表示 */
+    gap: 3vh; /* アイテム間の隙間 */
+    color: black;
+}
+
+.product {
+    height: 36vh;
+    border: solid gray 1px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.product:hover {
+    opacity: 0.8;
+    box-shadow: 0.5vh 0.5vh 10px rgba(128, 128, 128, 0.512);
+}
+.product_name,.product_price{
+    font-size: 2vh;
+    padding: 0.3vh;
+    margin: auto;
+    white-space: nowrap; /* テキストを折り返さない */
+    overflow: hidden;    /* はみ出た部分を非表示に */
+    text-overflow: ellipsis;
+}
+.img_box{
+    background-color: rgba(43, 43, 43, 0.243);
+    height: 30vh;
+    /* width: 30vh; */
+    align-items: center;
+    border-bottom: solid gray 1px;
+}
+.product img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: contain;       */
+    margin: auto;
+    object-fit: cover;
+}
+.no_product{
+    text-align: center;
+    font-size: 3vh;
+    margin: 15vh auto;
+}
+.pagination {
+    width: 100vw;
+    height: 5vh;
+    font-size: 2vh;
+    padding-top: 1.2vh;
+    border-top:gray solid 1px ;
+    position: fixed;
+    left:0;
+    bottom: 3vh;
+    background-color: rgb(255, 255, 255);
+    color: rgb(66, 66, 66);
+    display: flex;
+}
+
+.current{
+    width: 10vw;
+    font-size: 2vh;
+    margin: auto;
+    padding-top: 0.9vh;
+    position: relative;
+    bottom: 1vh;
+    text-align: center;
+}
+.left_page{
+    position: absolute;
+    left:30vw
+}
+.ligth_page{
+    position: absolute;
+    right: 30vw;
+}
+
+.pagination a{
+    margin: 2vw;
+    padding: 0.9vh 0.5vh 0.3vh;
+    border-bottom: white solid 1px;
+    transition: border 0.3s ease-in-out;
+}
+
+.pagination a:hover{
+    border-bottom: black solid 1px;
+}

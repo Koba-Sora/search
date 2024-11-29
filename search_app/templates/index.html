@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block links %}
+        <link href="{% static '/serch_app/css/index.css' %}" rel="stylesheet">
+{% endblock links %}
+
+{% block content %}
+<section class="homes-section"> 
+    <div class="square_center">
+        <div class="bottons">
+            <div class="hamburger-menu" id="index-menu-toggle">
+                <span class="div_in_btn">SEARCH</span>
+            </div>
+
+            {% if user.is_authenticated %}
+                <!-- ログインしている場合はログアウトボタンを表示 -->
+                <form action="{% url 'accounts_app:logout' %}" method="post">
+                    {% csrf_token %}
+                </form>
+                <a class="div_in_btn" href="{% url 'accounts_app:logout' %}" id="logout-link">LOGOUT</a>
+            {% else %}
+                <!-- ログインしていない場合はログインボタンを表示 -->
+                <a class="div_in_btn" href="{% url 'accounts_app:login' %}">LOGIN</a>
+            {% endif %}
+            <a class="div_in_btn" href="{% url 'accounts_app:signup' %}">SINGUP</a>
+        </div>
+    </div>
+
+    <p class="index-home">HOME</p>
+    <p class="index-search">SEARCH</p>            
+    <div class="square_2"></div>
+    <div class="square_3"></div>
+    <div class="square_4"></div>
+    <div class="square_5"></div>
+</section>
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}

@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% load custom_filters %} 
+{% load static %}
+{% block links %}
+        <link href="{% static '/serch_app/css/search.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 <!-- <form method="get">
@@ -27,33 +31,42 @@
     <button type="submit">検索</button>
 </form> -->
 
-<section class="search_body">
     <ul class="search_result">
         {% for product in page_obj %}
-            <a href="{% url 'search_app:product_detail' product.id %}"><li>{{ product.name }} - {{ product.price|floatformat:0|intcomma }}円</li></a>
+        <div class="product">
+            <a href="{% url 'search_app:product_detail' product.id %}">
+                <div class="img_box">
+                    <img src="{{ product.img1.url }}">
+                </div>
+                <li class="product_name">{{ product.name }}</li>
+                <li class="product_price" >{{ product.price|floatformat:0|intcomma }}円</li>
+            </a>
+        </div>
         {% empty %}
-            <li>No results found</li>
+                <p class="no_product">該当する商品がありません。</p>
         {% endfor %}
     </ul>
 
     <div class="pagination">
-        <span class="step-links">
+
             {% if page_obj.has_previous %}
-                <a href="?page=1&{{ request.GET|remove_page_param }}">最初</a>
-                <a href="?page={{ page_obj.previous_page_number }}&{{ request.GET|remove_page_param }}">前へ</a>
+                <div class="left_page">
+                    <a href="?page=1&{{ request.GET|remove_page_param }}">最初</a>
+                    <a href="?page={{ page_obj.previous_page_number }}&{{ request.GET|remove_page_param }}">前へ</a>
+                </div>
             {% endif %}
             <span class="current">
                 ページ {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
             </span>
+
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}&{{ request.GET|remove_page_param }}">次へ</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}&{{ request.GET|remove_page_param }}">最後</a>
+                <div class="ligth_page">
+                    <a href="?page={{ page_obj.next_page_number }}&{{ request.GET|remove_page_param }}">次へ</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}&{{ request.GET|remove_page_param }}">最後</a>
+                </div>
             {% endif %}
-        </span>
+
     </div>
-    
-</section>
+
 
 {% endblock content %}
-<!-- <a href="{% url 'product_list' %}">商品一覧に戻る</a>
-<a href="{% url 'product_create' %}">作成</a> -->

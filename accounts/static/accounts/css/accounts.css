@@ -1,0 +1,124 @@
+.header_log,#menu-toggle{
+    display: none;
+}
+
+.homes-section{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0%;
+    left: 0%;
+    overflow: hidden;
+}
+
+.square_center{
+    width: 60vh;
+    height: 50vh;
+    background: black;
+    border: black solid 2px;
+    position: absolute;
+    top: 55%; /* 親要素の50%の位置 */
+    left: 50%; /* 親要素の50%の位置 */
+    transform: translate(-50%, -50%); 
+    z-index: 50;
+}
+.loginbox{
+    margin:10% 0;
+    height: 80%;
+    width: 100%;
+    color: white;
+}
+
+.accounts_form{
+    color: white;
+    width: 100%;
+    height: 100%;
+    font-size: 2.4vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 要素間を等間隔に配置 */
+    text-align: center;
+    padding: 2vh 2vw;
+    align-items: center;
+}
+.accounts_form input{
+    background-color: white;
+    color: black;
+    margin: auto;
+    padding: 0.8vh;
+    margin-top: 0.4vh;
+    width: 60%;
+}
+
+.accounts-login,.accounts-singup{
+    font-size: 6vw;
+    position: absolute;
+    color: black;
+    top: 20vh;
+    left: 28vw;
+    font-family: 'Academy Engraved LET', serif;
+}
+.accounts_form button, .change-signup{
+    font-size: 2vh;
+    padding: 0.2vh 0.5vh 0.3vh;
+    cursor: pointer;
+    border: black solid 1px;
+    font-size: 2.5vh;
+    margin: 0 0 0 0.8vh;
+    transition: border 0.3s ease-in-out;
+}
+.accounts_form button:hover, .change-signup:hover{
+    border-bottom: white solid 1px;
+}
+.change-signup{
+    margin-top: 2vh;
+    font-size: 1.4vh;
+}
+.error{
+    padding: 1.5vh;
+    text-align: center;
+    font-size: 1.5vh;
+    color: black;
+}
+.square_2{
+    width: 20vw;
+    height: 55vh;
+    border: solid grey 1px;
+    position: absolute;
+    top: 15vh;
+    left: 5vw;
+    z-index: 10;
+
+}
+.square_3{
+    width: 40vw;
+    height: 40vh;
+    background-color: rgb(152, 152, 152);
+    /* border: solid grey 1px; */
+    position: absolute;
+    top: 0vh;
+    right: 0vw;
+    z-index: 1;
+
+}
+.square_4{
+    width: 30vw;
+    height: 40vh;
+    background-color: rgba(88, 88, 88, 0.157);
+    /* border: solid grey 1px; */
+    position: absolute;
+    bottom: 1.5vh;
+    left: 15vw;
+    z-index: -1;
+
+}
+.square_5{
+    width: 12vw;
+    height: 12vw;
+    /* background-color: peru; */
+    border: solid grey 1px;
+    position: absolute;
+    bottom: 10vh;
+    right: 18vw;
+    z-index: -1;
+}

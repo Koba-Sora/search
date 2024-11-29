@@ -4,73 +4,83 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{% static 'css/reset.css' %}" rel="stylesheet"> 
         <link href="{% static 'css/base.css' %}" rel="stylesheet"> 
-        <title>Document</title>
+        {% block links %}
+        {% endblock  %}
+        <title>SEARCH</title>
     </head>
     <body>
-        <header>
-            <a href="{% url 'search_app:search_view' %}">TOP</a>
-            <a href="{% url 'search_app:product_create' %}">作成</a>
-            {% if user.is_authenticated %}
-                <!-- ログインしている場合はログアウトボタンを表示 -->
-                <form action="{% url 'accounts_app:logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit">ログアウト</button>
-                </form>
-            {% else %}
-                <!-- ログインしていない場合はログインボタンを表示 -->
-                <a href="{% url 'accounts_app:login' %}"><button>ログイン</button></a>
-            {% endif %}
+            <header>
+                <a href="{% url 'search_app:home' %}">
+                    <p class="search">SEARCH</p>
+                </a>
 
-            <a href="{% url 'search_app:cart_detail' %}"><button>カート</button></a>
+                <div class="header_rigth">
+                    <a class="header_homes" href="{% url 'search_app:home' %}">HOME</a>
+                    
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'accounts_app:logout' %}" method="post">
+                            {% csrf_token %}
+                        </form>
+                        <a  class="header_homes" href="{% url 'accounts_app:logout' %}" id="logout-link">LOGOUT</a>
+                    {% else %}
+                        <a class="header_homes" href="{% url 'accounts_app:login' %}?next={{ request.path }}">LOGIN</a>
+                    {% endif %}
 
-            <div class="hamburger-menu" id="menu-toggle">
-                <p>メニュー</p>
-                <!-- <img src="{% static 'serch_app/images/検索用の虫眼鏡アイコン素材のコピー.png' %}" alt="" style="width: 13%;"> -->
-            </div>
+                    <a href="{% url 'search_app:like_detail' %}"><img class="header_img" src="{% static 'images/ハートのマーク.png' %}"></a>
+                    <a href="{% url 'search_app:cart_detail' %}"><img class="header_img" src="{% static 'images/カートのアイコン素材.png' %}"></a>
 
-            <nav id="menu">
-                <div class="close-button" id="close-menu" >
-                    <p>閉じる</p>
-                    <!-- <img src="{% static 'serch_app/images/細いバツのアイコン.png' %}" alt=""> -->
+                    <div class="hamburger-menu" id="menu-toggle">
+                        <img class="header_img" src="{% static 'images/検索用の虫眼鏡アイコン素材.png' %}">
+                    </div>
+                    <a href="{% url 'search_app:product_create' %}"><img class="header_img" src="{% static 'images/プラスのアイコン素材.png' %}"></a>
                 </div>
-                <form method="get">
-                    {{ form.as_p }}
-                    <div class="search_contents">
-                        <label for="category">カテゴリ:</label>
-                        <select name="category">
-                            <option value="">すべて</option>
-                            <option value="本">本</option>
-                            <option value="電子機器">電子機器</option>
-                        </select>
+
+
+                <nav id="menu">
+                    <div class="close-button" id="close-menu" >
+                        閉
                     </div>
-                    <div class="search_contents">
-                        <label for="min_price">最低価格:</label>
-                        <input type="number" name="min_price" min="0"><br>
-                    </div>
-                    <div class="search_contents">
-                        <label for="max_price">最高価格:</label>
-                        <input type="number" name="max_price" min="0">
-                    </div>
-                    <div class="search_contents">
-                        <label for="sort">並び替え:</label>
-                        <select name="sort">
-                            <option value="name">名前順</option>
-                            <option value="price_asc">価格が安い順</option>
-                            <option value="price_desc">価格が高い順</option>
-                        </select>
-                    </div>
-                    <button type="submit">検索</button>
-                </form>
-            </nav>
+                    <form method="get" action="{% url 'search_app:search_view' %}">
+                        {{ search_form }}
+                        <div class="search_contents">
+                            <label for="category">カテゴリー:</label>
+                            <select name="category">
+                                <option value="">すべて</option>
+                                <option value="本">本</option>
+                                <option value="電子機器">電子機器</option>
+                            </select>
+                        </div>
+                        <div class="search_contents">
+                            <label for="min_price">最低価格:</label>
+                            <input type="number" name="min_price" min="0"><br>
+                        </div>
+                        <div class="search_contents">
+                            <label for="max_price">最高価格:</label>
+                            <input type="number" name="max_price" min="0">
+                        </div>
+                        <div class="search_contents">
+                            <label for="sort">並び替え:</label>
+                            <select name="sort">
+                                <option value="name">名前順</option>
+                                <option value="price_asc">価格が安い順</option>
+                                <option value="price_desc">価格が高い順</option>
+                            </select>
+                        </div>
+                        <button type="submit">検索</button>
+                    </form>
+                </nav>
         </header>
+                <div id="overlay"></div>
         
 
 
         {% block content %}
         {% endblock content %}
-
-        <script src="{% static 'js/search.js' %}"></script>
-
+        <footer>
+            <p>©︎kobayashi</p>
+        </footer>
+        <script src="{% static 'js/base.js' %}"></script>
     </body>
 </html>

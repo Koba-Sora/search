@@ -1,7 +1,62 @@
-<h2>{{ name }}  さんの Cart</h2>
-<ul>
-    {% for item in cart_items %}
-        <li>{{ item.product.name }} / {{ item.quantity }}個 / {{ item.total_price | floatformat:0 }}円</li>
-    {% endfor %}
-</ul>
-<p>合計金額: {{ total_price | floatformat:0 }}円</p>
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block links %}
+        <link href="{% static '/serch_app/css/like_and_cart.css' %}" rel="stylesheet">
+
+{% endblock  %}
+{% block content %}
+<section class="main">
+    <h2 class="pagename">{{ name }} さんのカート</h2>
+    {% if cart_items %}
+        <div class="total-prices">
+            <p>合計金額:</p> 
+            <p id="total-price">{{ total_price | floatformat:0 | intcomma }}</p>
+            <p>円</p>
+        </div>
+    {% endif %}
+
+        {% for item in cart_items %}
+            <ul>
+                <li>
+                    <div class="product">
+                        <a href="{% url 'search_app:product_detail' item.product.pk %}" >
+                            <div class="img_box">
+                                <img class="product_img"  src='{{ item.product.img1.url }}' >
+                            </div>
+                            <p class="product_name">{{ item.product.name }}</p>
+                            <p class="product_price">{{ item.product.price|floatformat:0|intcomma }}円</p>
+                        </a>
+                    </div>
+
+                    <div class="under_product">
+
+                        <button type="button" class="update-quantity" data-cart-item-id="{{ item.id }}" data-action="decrease">減少</button>
+
+                        <form class="quantity_form" method="POST" action="{% url 'search_app:cart_update_quantity' item.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <p class="quantity" id="quantity-{{ item.id }}">{{ item.quantity }}個</p>
+                        </form>
+
+                        <button type="button" class="update-quantity" data-cart-item-id="{{ item.id }}" data-action="increase">増加</button>
+
+                    </div>   
+
+                    <form method="POST" action="{% url 'search_app:cart_remove_item' item.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button class="cart_delete" type="submit" name="action" value="remove">カートから削除</button>
+                    </form> 
+                </li>
+            </ul>
+        {% empty %}
+            <div class="empty_box">
+                <p>カートは空です。</p>
+                <a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
+            </div>
+        {% endfor %}
+
+
+</section>
+
+<script src="{% static 'js/cart_detail.js' %}"></script>
+{% endblock content %}

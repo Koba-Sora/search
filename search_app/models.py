@@ -17,9 +17,17 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)# 1はカテゴリID
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="products")  # 外部キーを追加
     quantity = models.PositiveIntegerField(default=1)
+    img1 = models.ImageField(default='images/default.jpeg')
+    img2 = models.ImageField(blank=True,null=True)
+    img3 = models.ImageField(blank=True,null=True)
+    # sales_figures = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.name
+    
+    def images(self):
+        imgs = [self.img1,self.img2,self.img3]
+        return imgs
     
 class CartItem(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)

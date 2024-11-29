@@ -1,0 +1,161 @@
+.main{
+    width: 80vw;
+    background-color: rgba(169, 169, 169, 0.238);
+    margin: 10vh auto;
+    padding: 5vw 4vw 3vh;
+
+}
+.pagename{
+    text-align: center;
+    font-size: 6vh;
+    font-family: 'Academy Engraved LET', serif;
+
+}
+.total-prices{
+    display: flex;
+    width: 20vw;
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    margin-left: 70%;
+    justify-content: space-between;
+}
+ul{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    gap: 3vh;
+}
+.empty_box{
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    font-size: 2.5vh;
+    margin: 5vh auto;
+}
+.empty_li{
+    display: block;
+    width: 15vw;
+    height: 6vh;
+    margin: auto;
+    margin-top: 5vh;
+    font-size: 3vh;
+    border: black solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.empty_li:hover{
+    color: white;
+    background-color: black;
+}
+
+.product {
+    margin-top: 1vh;
+    height: 36vh;
+    border: solid gray 1px;
+    text-align: center;
+    overflow: hidden;
+}
+.product:hover {
+    opacity: 0.8;
+    box-shadow: 0.5vh 0.5vh 10px rgba(128, 128, 128, 0.512);
+}
+
+.img_box{
+    background-color: rgba(43, 43, 43, 0.243);
+    height: 30vh;
+    /* width: 30vh; */
+    align-items: center;
+    border-bottom: solid gray 1px;
+}
+.product_img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: contain;       */
+    margin: auto;
+    object-fit: cover;
+}
+.product_name, .product_price{
+    font-size: 2vh;
+    height: 3vh;
+    padding: 0.5vh 0;
+    white-space: nowrap; /* テキストを折り返さない */
+    overflow: hidden;    /* はみ出た部分を非表示に */
+    text-overflow: ellipsis;
+    background-color: white;
+}
+
+.under_product{
+    margin: 1vh 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+
+.btn-left {
+    width: 85%;
+    height: 5vh;
+    padding: 0.9vh 1vw 1vh;
+    font-size: 2vh;
+    border: solid gray 1px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.btn-rigth{
+    width: 15%;
+    height: 5vh;
+    text-align: center;
+    font-size: 3vh;
+    border: solid gray 1px;
+    cursor: pointer;
+    overflow: hidden;
+    align-items: center;
+    position: relative;
+}
+.btn-left:hover, .btn-rigth:hover {
+    background-color: black;
+    color: white;
+}
+
+.like_img{
+    padding: 5%;
+    width: 80%;
+}
+.quantity_form{
+    width: 20%;
+    text-align: center;
+}
+.quantity{
+    width: 100%;
+}
+.update-quantity{
+    padding: 0.5vh 1vw;
+    border: solid gray 1px;
+    background-color: white;
+
+}
+
+.cart_delete{
+    padding: 0.5vh 1vw;
+    width: 70%;
+    color: rgb(0, 0, 0);
+    background-color: rgb(192, 192, 192);
+    border: solid rgb(0, 0, 0) 1px;
+    text-align: center;
+    margin-bottom: 2vh;
+    margin-left: 15%;
+    align-items: center;
+
+}
+.update-quantity:hover{
+    background-color: gray;
+    color: white;
+}
+.cart_delete:hover{
+    background-color: black;
+    color: white;
+}
