@@ -27,6 +27,9 @@ def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
     imgs = product.images()  # images()メソッドを呼び出して画像リストを取得
 
+    # 元のページ情報を取得
+    back_url = request.GET.urlencode()
+
     if request.user.is_authenticated:
         like_list = Likelist.objects.filter(user=request.user)
         product_in_likes = like_list.filter(product=product).exists()
@@ -43,6 +46,7 @@ def product_detail(request, pk):
         'like_list': like_list,
         'product_in_likes': product_in_likes,  # Pass the boolean flag
         'like_item': like_item,  # 追加: like_item を渡す
+        'back_url': back_url,
     })
 
 @login_required

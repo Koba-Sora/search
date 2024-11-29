@@ -99,6 +99,6 @@
         </div>
 
     </section>
-    <a href="{% url 'search_app:search_view' %}" class="return_btn">一覧へ戻る</a> 
+    <a href="{% url 'search_app:search_view' %}?{{ back_url }}" class="return_btn">一覧へ戻る</a> 
     <script src="{% static '/js/detail.js' %}"></script>
 {% endblock content %}
