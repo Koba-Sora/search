@@ -42,6 +42,7 @@ ul{
     height: 6vh;
     margin: auto;
     margin-top: 5vh;
+    margin-bottom: 10vh;
     font-size: 3vh;
     border: black solid 1px;
     display: flex;
