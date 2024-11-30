@@ -57,7 +57,7 @@ ul{
 
 .product {
     margin-top: 1vh;
-    height: 36vh;
+    max-height: 36vh;
     border: solid gray 1px;
     text-align: center;
     overflow: hidden;
@@ -69,10 +69,11 @@ ul{
 
 .img_box{
     background-color: rgba(43, 43, 43, 0.243);
-    height: 30vh;
-    /* width: 30vh; */
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 縦横比を1:1に設定 */
     align-items: center;
     border-bottom: solid gray 1px;
+    position: relative;
 }
 .product_img {
     width: 100%;
@@ -216,4 +217,23 @@ animation: slide-out 0.5s ease-in-out forwards; /* スライドアウトアニ�
     top: -50px; /* 通知バーが画面の外へ */
     opacity: 0;
 }
+}
+
+/* Sold out オーバーレイ */
+.sold-out-overlay {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 36%;
+    height: 25%;
+    background-color: rgb(255, 0, 0);  /* 半透明の背景 */
+    display: flex;
+    justify-content: space-around; /* 左寄せ */
+    align-items: flex-end;
+    color: white;
+    font-size: 1.5vh;
+    font-weight: bold;
+    transform: rotate(-45deg); 
+    transform-origin: left bottom;
+    text-align: center;
 }

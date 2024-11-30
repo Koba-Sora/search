@@ -24,12 +24,12 @@
     margin: 10vh 10vw 12vh;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* 自動で4列表示 */
-    gap: 3vh; /* アイテム間の隙間 */
+    gap: 4vh; /* アイテム間の隙間 */
     color: black;
 }
 
 .product {
-    height: 36vh;
+    max-width: 38vh;
     border: solid gray 1px;
     text-align: center;
     position: relative;
@@ -49,8 +49,9 @@
 }
 .img_box{
     background-color: rgba(43, 43, 43, 0.243);
-    height: 30vh;
-    /* width: 30vh; */
+    width: 100%;
+    max-height: 85%;
+    aspect-ratio: 1 / 1; /* 縦横比を1:1に設定 */
     align-items: center;
     border-bottom: solid gray 1px;
 }
@@ -107,4 +108,25 @@
 
 .pagination a:hover{
     border-bottom: black solid 1px;
+}
+
+/* Sold out オーバーレイ */
+.sold-out-overlay {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 50%;
+    height: 25%;
+    background-color: rgb(255, 0, 0);  /* 半透明の背景 */
+    display: flex;
+    padding-left: 10%;
+    /* justify-content: space-around;  */
+    align-items: flex-end;
+    color: white;
+    font-size: 1.8vh;
+    font-weight: bold;
+    transform: rotate(-45deg); 
+    transform-origin: left bottom;
+    text-align: center;
+    white-space: nowrap;
 }

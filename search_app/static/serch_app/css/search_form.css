@@ -10,7 +10,7 @@
 }
 .product_custom{
     width: 80vw;
-    /* height: 62vh; */
+
     margin: auto;
     border: solid black 1px;
     margin-bottom: 25vh;
@@ -26,18 +26,22 @@
 .left, .rigth{
     width: 50%;
     height: 90%;
-    flex-direction: column;      /* 子要素を縦方向に並べる */
+    flex-direction: column;  
     justify-content: space-between;
     
 }
-.form-group{
+.form-group, .img-group{
+    word-break: keep-all;
     display: flex;
     font-size: 1h;
     margin: auto;
     margin-bottom: 3vh;    
 }
+.img-group label{
+    margin: 0;
+}
 
-.form-group label{
+.form-group label, .img-group .inner_label{
     display: block;
     margin: 1vh 1vw;
     width: 30%;
@@ -51,13 +55,20 @@
     margin: 1vh;
     width: 70%;
 }
-.img_label input{
-    border: none;
-    width: 85%;
-    margin-left: 0;
-    
-    
+.img-label{
+    padding: 1vh;
+    text-align: left;
+    margin: 1vh;
+    width: 70%;
 }
+.img_label a{
+    display: block;
+    max-width: 100%;
+    white-space: nowrap; 
+    overflow: hidden;   
+    text-overflow: ellipsis;   
+}
+
 .buttons{
     position: absolute;
     bottom: -8vh;

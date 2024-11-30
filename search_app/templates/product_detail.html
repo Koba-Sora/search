@@ -36,7 +36,14 @@
         
             <!-- メイン画像 -->
             <div id="imageModal" class="modal">
-                <img class="main_img" id="modalImage" src="{{ product.img1.url }}">
+                <div class="main_img_box">
+                    <img class="main_img" id="modalImage" src="{{ product.img1.url }}">
+                    {% if product.quantity == 0 %}
+                        <div class="sold-out-overlay">
+                            <p class="sold-out-text">Sold Out</p>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
 

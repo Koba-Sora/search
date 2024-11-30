@@ -33,15 +33,20 @@
 
     <ul class="search_result">
         {% for product in page_obj %}
-        <div class="product">
-            <a href="{% url 'search_app:product_detail' product.id %}?{{ request.GET.urlencode }}">
-                <div class="img_box">
-                    <img src="{{ product.img1.url }}">
+                <div class="product">
+                    <a href="{% url 'search_app:product_detail' product.id %}?{{ request.GET.urlencode }}">
+                        <div class="img_box">
+                            <img src="{{ product.img1.url }}">
+                            {% if product.quantity == 0 %}
+                                <div class="sold-out-overlay">
+                                    <p class="sold-out-text">Sold Out</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <p class="product_name">{{ product.name }}</p>
+                        <p class="product_price" >{{ product.price|floatformat:0|intcomma }}円</p>
+                    </a>
                 </div>
-                <li class="product_name">{{ product.name }}</li>
-                <li class="product_price" >{{ product.price|floatformat:0|intcomma }}円</li>
-            </a>
-        </div>
         {% empty %}
                 <p class="no_product">該当する商品がありません。</p>
         {% endfor %}

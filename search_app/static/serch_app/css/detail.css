@@ -53,9 +53,20 @@ body{
 }
 .modal{
     width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.main_img_box{
+    border: pink solid 1px;
+    width: 90%;
+    aspect-ratio: 1 / 1; /* 縦横比を1:1に設定 */
+    max-height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 .product_img{
-    width: 85%; /* コンテナ幅に合わせる */
+    width: 100%; /* コンテナ幅に合わせる */
     aspect-ratio: 1 / 1; /* 縦横比を1:1に設定 */
     overflow: hidden;
     object-fit: cover;
@@ -66,15 +77,15 @@ body{
 }
 
 .main_img{
-    width: 90%; /* コンテナ幅に合わせる */
+    width: 100%; /* コンテナ幅に合わせる */
     max-height: 100%;
     aspect-ratio: 1 / 1; /* 縦横比を1:1に設定 */
     overflow: hidden;
     object-fit: cover;
     object-fit: contain;
-    margin: 0 5%;
     border: solid gray 1px;
     background-color: rgba(0, 0, 0, 0.194);
+    display: block;
 }
 
 .rigth_box{
@@ -245,4 +256,23 @@ animation: slide-out 0.5s ease-in-out forwards; /* スライドアウトアニ�
     top: -50px; /* 通知バーが画面の外へ */
     opacity: 0;
 }
+}
+
+/* Sold out オーバーレイ */
+.sold-out-overlay {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 36%;
+    height: 25%;
+    background-color: rgb(255, 0, 0);  /* 半透明の背景 */
+    display: flex;
+    justify-content: space-around; /* 左寄せ */
+    align-items: flex-end;
+    color: white;
+    font-size: 3vh;
+    font-weight: bold;
+    transform: rotate(-45deg); /* 斜めに傾ける（-45度の回転） */
+    transform-origin: left bottom;
+    text-align: center;
 }
