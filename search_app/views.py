@@ -85,7 +85,7 @@ def product_list(request):
 
 def search_view(request):
     form = SearchForm(request.GET or None)
-    results = Product.objects.all() # クエリセットの初期化
+    results = Product.objects.all().order_by('-id')  # クエリセットの初期化
     if form.is_valid():
         query = form.cleaned_data['query']
         if query:
