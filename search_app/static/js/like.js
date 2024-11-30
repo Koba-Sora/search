@@ -22,7 +22,15 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 // 通知バーにメッセージを表示
-                notificationBar.innerText = `${data.product_name} が ${data.message} `;
+                notificationBar.innerText = `${data.message} `;
+
+                // 在庫切れの場合に背景色を変更
+                if (data.status === 'out_of_stock') {
+                    notificationBar.style.backgroundColor = 'orange';  // 背景色を赤に変更
+                } else {
+                    notificationBar.style.backgroundColor = 'lightgreen';  // 通常の背景色
+                }
+            
                 notificationBar.style.display = 'block';
 
                 // スライドインのアニメーションを適用

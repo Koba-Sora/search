@@ -127,23 +127,30 @@ def search_view(request):
 @login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    cart_item, created = CartItem.objects.get_or_create(user=request.user, product=product)
 
-    if not created:
-        cart_item.quantity += 1
-        cart_item.save()
+    # 商品の在庫を確認
+    if product.quantity <= 0:
+        return JsonResponse({
+            'message': 'この商品は在庫がありません。',
+            'product_name': product.name,
+            'status': 'out_of_stock'  # 在庫切れを示すステータスを追加
+        })
+
+    cart_item, created = CartItem.objects.get_or_create(user=request.user, product=product)
 
     if not created:
         cart_item.quantity += 1
         cart_item.save()
         return JsonResponse({
             'message': 'もう1つ商品がカートに追加されました！',
-            'product_name': product.name
+            'product_name': product.name,
+            'status': 'stock'
         })
     else:
         return JsonResponse({
             'message': '新しくカートに追加されました！',
-            'product_name': product.name
+            'product_name': product.name,
+            'status': 'stock'
         })
 
 
