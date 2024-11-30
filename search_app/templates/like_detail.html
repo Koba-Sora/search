@@ -24,7 +24,7 @@
                         <!-- <a class="btn-left" href="{% url 'search_app:add_to_cart' item.product.pk %}">
                             カートに追加
                         </a> -->
-                        <form id="add-to-cart-form" action="{% url 'search_app:add_to_cart' item.product.id %}" method="post">
+                        <form class="btn-left_form" id="add-to-cart-form-{{ item.id }}" action="{% url 'search_app:add_to_cart' item.product.id %}" method="post">
                             {% csrf_token %}
                             <button type="submit" class="btn-left">カートに追加</button>
                         </form>
@@ -46,5 +46,5 @@
         <a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
 
 <div id="notification-bar"></div>
-<script src="{% static '/js/detail.js' %}"></script>
+<script src="{% static '/js/like.js' %}"></script>
 {% endblock content %}
