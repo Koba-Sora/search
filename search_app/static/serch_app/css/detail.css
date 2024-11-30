@@ -58,7 +58,6 @@ body{
     justify-content: space-around;
 }
 .main_img_box{
-    border: pink solid 1px;
     width: 90%;
     aspect-ratio: 1 / 1; /* 縦横比を1:1に設定 */
     max-height: 100%;
