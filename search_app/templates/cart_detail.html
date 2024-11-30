@@ -15,9 +15,9 @@
             <p>円</p>
         </div>
     {% endif %}
-
+    <ul>
         {% for item in cart_items %}
-            <ul>
+
                 <li>
                     <div class="product">
                         <a href="{% url 'search_app:product_detail' item.product.pk %}" >
@@ -47,15 +47,15 @@
                         <button class="cart_delete" type="submit" name="action" value="remove">カートから削除</button>
                     </form> 
                 </li>
-            </ul>
+
         {% empty %}
             <div class="empty_box">
                 <p>カートは空です。</p>
-                <a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
+
             </div>
         {% endfor %}
-
-
+    </ul>
+        <a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
 </section>
 
 <script src="{% static 'js/cart_detail.js' %}"></script>

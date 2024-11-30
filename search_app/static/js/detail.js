@@ -79,3 +79,50 @@ function changeMainImage(imgUrl) {
         }
     });
 
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const addToCartForm = document.getElementById('add-to-cart-form');
+        const notificationBar = document.getElementById('notification-bar');
+        
+        if (addToCartForm) {
+            addToCartForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // フォームのデフォルトの動作を無効化
+    
+                // フォームを非同期で送信
+                fetch(addToCartForm.action, {
+                    method: 'POST',
+                    body: new FormData(addToCartForm),
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name="csrfmiddlewaretoken"]').value
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // 通知バーにメッセージを表示
+                    notificationBar.innerText = data.product_name + " が" + data.message ;
+
+                    notificationBar.style.display = 'block';
+    
+                    // スライドインのアニメーションを適用
+                    notificationBar.classList.remove('slide-out');
+                    notificationBar.classList.add('slide-in');
+    
+                    // 数秒後にスライドアウトのアニメーションを適用
+                    setTimeout(() => {
+                        notificationBar.classList.remove('slide-in');
+                        notificationBar.classList.add('slide-out');
+                        
+                        // アニメーション後に非表示にする
+                        setTimeout(() => {
+                            notificationBar.style.display = 'none';
+                        }, 500); // スライドアウトアニメーションの時間（500ms）後に非表示にする
+                    }, 3000); // 3秒後にスライドアウト
+                })
+                
+                .catch(error => {
+                    console.error('エラー:', error);
+                });
+            });
+        }
+    });    

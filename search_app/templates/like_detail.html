@@ -7,8 +7,8 @@
 {% block content %}
 <section class="main">
     <h2 class="pagename">{{ request.user }} さんの お気に入り一覧</h2>
+    <ul>
         {% for item in likelist %}
-            <ul>
                 <li>
                     <div class="product">
                         <a href="{% url 'search_app:product_detail' item.product.pk %}" >
@@ -21,22 +21,30 @@
                     </div>
 
                     <div class="under_product">
-                        <a class="btn-left" href="{% url 'search_app:add_to_cart' item.product.pk %}">
+                        <!-- <a class="btn-left" href="{% url 'search_app:add_to_cart' item.product.pk %}">
                             カートに追加
-                        </a>
+                        </a> -->
+                        <form id="add-to-cart-form" action="{% url 'search_app:add_to_cart' item.product.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-left">カートに追加</button>
+                        </form>
                         <form class="btn-rigth" action="{% url 'search_app:like_remove_item' item.id %}" method="post">
                             {% csrf_token %}
-                            <button type="submit"><img class="like_img" src="{% static 'images/like-after.png' %}"></button>
+                            <button class="like_img_btn" type="submit"><img class="like_img" src="{% static 'images/like-after.png' %}"></button>
                         </form>
                     </div>
                 </li>
-            </ul>
             {% empty %}
+
             <div class="empty_box">
                 <p >お気に入りアイテムはありません。</p>
-                <a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
-            </div>
-        {% endfor %}
 
+            </div>
+
+        {% endfor %}
+    </ul>
+        <a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
 </section>
+<div id="notification-bar"></div>
+<script src="{% static '/js/detail.js' %}"></script>
 {% endblock content %}

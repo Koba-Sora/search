@@ -132,8 +132,11 @@ body{
     text-decoration: none;
     display: block;
 }
-.add .btn-left {
+#add-to-cart-form{
     width: 85%;
+}
+.add .btn-left {
+    width: 100%;
     height: 5vh;
 
     padding: 0.9vh 1vw 1vh;
@@ -147,19 +150,21 @@ body{
 
 }
 .add .btn-rigth{
+    display: flex;
     width: 15%;
     height: 5vh;
-    text-align: center;
-    font-size: 3vh;
     border: black solid 1px;
     cursor: pointer;
     overflow: hidden;
     align-items: center;
-    position: relative;
+    justify-content: space-around;
 }
 .btn-inner{
+    display: flex;
     width: 100%;
     height: 100%;
+    align-items: center;
+    justify-content: space-around;
 
 
 }
@@ -168,16 +173,18 @@ body{
     background-color: black;
     color: white;
 }
-
+.like-button{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 .btn-rigth img {
     width: auto; /* 必要に応じて調整 */
     height: 80%; /* アスペクト比を保持 */
-    display: block;
-    margin: auto;
-    position: absolute;
-    transform: translate(-50%, -50%); 
-    top: 50%;
-    left: 50%;
+
+
 }
 
 .return_btn{
@@ -193,4 +200,50 @@ body{
 }
 .return_btn:hover{
     border-bottom:black solid 1px ;
+}
+
+#notification-bar {
+    display: none;
+    width: 100%;
+    text-align: center;
+    background-color: lightgreen;
+    color: black;
+    padding: 10px;
+    position: fixed;
+    top:6vh;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* 初期状態では透明 */
+    animation: slide-in 0.5s ease-in-out forwards; /* スライドインアニメーション */
+    }
+
+
+/* スライドインのアニメーション */
+@keyframes slide-in {
+0% {
+    top: -50px; /* 通知バーが画面の外から */
+    opacity: 0;
+}
+100% {
+    top: 6vh; /* 通知バーが指定位置に */
+    opacity: 1;
+}
+}
+
+#notification-bar.slide-out {
+animation: slide-out 0.5s ease-in-out forwards; /* スライドアウトアニメーション */
+}
+
+/* スライドアウトのアニメーション */
+@keyframes slide-out {
+0% {
+    top: 6vh;
+    opacity: 1;
+}
+100% {
+    top: -50px; /* 通知バーが画面の外へ */
+    opacity: 0;
+}
 }

@@ -67,11 +67,15 @@
                 <!-- ボタンの配置 -->
                 <div class="add">
                     {% if user.is_authenticated %}
-                        <a class="btn-left" href="{% url 'search_app:add_to_cart' product.pk %}">
+                        <!-- <a class="btn-left" id="add-to-cart-button" data-product-id="{{ product.id }}" href="{% url 'search_app:add_to_cart' product.pk %}">
                             カートに追加
-                        </a>
+                        </a> -->
+                        <form id="add-to-cart-form" action="{% url 'search_app:add_to_cart' product.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-left">カートに追加</button>
+                        </form>
                     {% else %}
-                        <a class="btn-left" href="{% url 'accounts_app:login' %}?next={% url 'search_app:product_detail' product.id %}" >
+                        <a class="btn-left"  href="{% url 'accounts_app:login' %}?next={% url 'search_app:product_detail' product.id %}" >
                             カートに追加</a>
                     {% endif %}
 
@@ -100,5 +104,7 @@
 
     </section>
     <a href="{% url 'search_app:search_view' %}?{{ back_url }}" class="return_btn">一覧へ戻る</a> 
+    <div id="notification-bar"></div>
+
     <script src="{% static '/js/detail.js' %}"></script>
 {% endblock content %}
