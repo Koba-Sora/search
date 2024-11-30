@@ -3,6 +3,7 @@
     background-color: rgba(169, 169, 169, 0.238);
     margin: 10vh auto;
     padding: 5vw 4vw 3vh;
+    min-height: 35vh;
 
 }
 .pagename{
@@ -25,6 +26,10 @@ ul{
     gap: 3vh;
 }
 .empty_box{
+    position: absolute;
+    top: 30vh; /* 親要素の50%の位置 */
+    left: 50%; /* 親要素の50%の位置 */
+    transform: translate(-50%, -50%); 
     width: 50%;
     text-align: center;
     align-items: center;

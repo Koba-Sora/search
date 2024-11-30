@@ -38,13 +38,13 @@
 
             <div class="empty_box">
                 <p >お気に入りアイテムはありません。</p>
-
             </div>
 
         {% endfor %}
     </ul>
-        <a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
 </section>
+        <a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
+
 <div id="notification-bar"></div>
 <script src="{% static '/js/detail.js' %}"></script>
 {% endblock content %}

@@ -55,8 +55,9 @@
             </div>
         {% endfor %}
     </ul>
-        <a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
 </section>
+<a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
+
 
 <script src="{% static 'js/cart_detail.js' %}"></script>
 {% endblock content %}
