@@ -1,0 +1,11 @@
+.main{
+    margin-top: 10vh;
+}
+/* 遷移先ページのフェードイン */
+body {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+body.loaded {
+    opacity: 1;
+}

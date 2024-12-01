@@ -7,6 +7,8 @@
 {% endblock  %}
 {% block content %}
 <section class="main">
+    <!-- 通知バーのHTML -->
+<div id="notification-bar" ></div>
     <h2 class="pagename">{{ name }} さんのカート</h2>
     {% if cart_items %}
         <div class="total-prices">
@@ -14,6 +16,10 @@
             <p id="total-price">{{ total_price | floatformat:0 | intcomma }}</p>
             <p>円</p>
         </div>
+        <form method="post" action="{% url 'search_app:checkout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary" id="purchase-button">購入する</button>
+        </form>    
     {% endif %}
     <ul>
         {% for item in cart_items %}
@@ -61,6 +67,7 @@
     </ul>
 </section>
 <a class="empty_li" href="{% url 'search_app:search_view' %}">一覧へ戻る</a>
+
 
 
 <script src="{% static 'js/cart_detail.js' %}"></script>

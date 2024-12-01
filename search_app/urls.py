@@ -21,6 +21,8 @@ urlpatterns = [
   path('like/add/<int:product_id>/', views.add_likelist, name='add_to_like'),
   path('like/remove/<int:like_item_id>/', views.like_remove_item, name='like_remove_item'),
   path('cart/update-quantity/<int:cart_item_id>/', views.cart_update_quantity, name='cart_update_quantity'),
+  path('cart/checkout/', views.checkout, name='checkout'),
+  path('cart/checkout/complete/', views.purchase_complete, name='complete'),
 
-
+  
 ]

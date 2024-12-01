@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Category, CartItem, Likelist
+from .models import Product, Category, CartItem, Likelist, PurchaseHistory
 from .forms import ProductForm, SearchForm
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import json  
+from django.db import transaction
+from django.contrib import messages
 
 def index(request):
     form = SearchForm(request.GET or None)
@@ -223,3 +225,58 @@ def like_remove_item(request, like_item_id):
     like_item.delete()
     # return redirect('search_app:like_detail')
     return redirect(request.META.get('HTTP_REFERER',))
+
+@login_required
+def checkout(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+
+    if not cart_items.exists():
+        return JsonResponse({'status': 'error', 'message': 'カートが空です。'})
+
+    try:
+        with transaction.atomic():
+            for cart_item in cart_items:
+                product = cart_item.product
+
+                # 在庫チェック
+                if product.quantity < cart_item.quantity:
+                    message = f"在庫不足: {product.name}の在庫は{product.quantity}つです。"
+                    return JsonResponse({
+                        'status': 'error',
+                        'message': message,
+                        'product_name': product.name,
+                        'status_code': 'out_of_stock'  # 在庫不足を示すステータス
+                    }, json_dumps_params={'ensure_ascii': False})
+
+                # 在庫を減らす
+                product.quantity -= cart_item.quantity
+                product.save()
+
+                # 購入履歴を記録
+                PurchaseHistory.objects.create(
+                    user=request.user,
+                    product=product,
+                    quantity=cart_item.quantity
+                )
+
+            # カートを空にする
+            cart_items.delete()
+
+        # 購入完了メッセージ
+        return JsonResponse({
+            'status': 'success',
+            'message': '購入が完了しました！',
+            'status_code': 'success'
+        })
+
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+
+
+def purchase_complete(request):
+    return render(request, 'complete.html')
+
+@login_required
+def purchase_history(request):
+    purchases = PurchaseHistory.objects.filter(user=request.user).order_by('-purchase_date')
+    return render(request, 'purchase_history.html', {'purchases': purchases})
