@@ -254,3 +254,24 @@ animation: slide-out 0.5s ease-in-out forwards; /* スライドアウトアニ�
     transform: translateY(-100%);
     opacity: 0;
 }
+#main-content {
+    transition: opacity 1s ease-out;
+    opacity: 1; /* 初期状態は表示 */
+}
+.primary_form {
+    width: 100%; /* フォーム全体を中央揃え */
+    display: flex;
+    justify-content: center; /* 水平方向に中央揃え */
+    align-items: center; /* 垂直方向に中央揃え */
+    margin: 2vh 0 4vh; /* 上下に余白を追加 */
+}
+.btn-primary {
+    width: 20vw; /* ボタンの幅 */
+    font-size: 4vh; /* フォントサイズ */
+    border: solid black 1px; /* ボタンの枠線 */
+    text-align: center; /* テキストを中央揃え */
+}
+.btn-primary:hover{
+    background-color: black;
+    color: white;
+}

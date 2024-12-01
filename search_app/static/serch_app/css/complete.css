@@ -1,11 +1,16 @@
 .main{
-    margin-top: 10vh;
+
+    width: 80%;
+    margin: auto;
+    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
 }
-/* 遷移先ページのフェードイン */
-body {
-    opacity: 0;
-    transition: opacity 1s ease-out;
+#main-content {
+    opacity: 0; /* 初期状態は非表示 */
+    transition: opacity 1s ease-in; /* フェードイン用 */
 }
-body.loaded {
-    opacity: 1;
+.main-text{
+    font-size: 5vh;
+    margin-bottom: 2vh;
 }

@@ -4,6 +4,7 @@ body {
 }
 
 header {
+    font-family: "Ten Mincho", serif;
     position: fixed;  /* 固定 */
     width: 100vw;
     height: 6vh;
@@ -13,7 +14,7 @@ header {
     background-color: black;
     color: white;
     display: flex; /* 横並び */
-    z-index: 100;
+    z-index: 1000; 
     align-items: center;
 }
 

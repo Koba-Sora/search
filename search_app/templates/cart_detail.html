@@ -6,7 +6,7 @@
 
 {% endblock  %}
 {% block content %}
-<section class="main">
+<section class="main" id="main-content">
     <!-- 通知バーのHTML -->
 <div id="notification-bar" ></div>
     <h2 class="pagename">{{ name }} さんのカート</h2>
@@ -16,9 +16,9 @@
             <p id="total-price">{{ total_price | floatformat:0 | intcomma }}</p>
             <p>円</p>
         </div>
-        <form method="post" action="{% url 'search_app:checkout' %}">
+        <form method="post" action="{% url 'search_app:checkout' %}" class="primary_form">
             {% csrf_token %}
-            <button type="submit" class="btn btn-primary" id="purchase-button">購入する</button>
+            <button type="submit" class="btn-primary" id="purchase-button">購入する</button>
         </form>    
     {% endif %}
     <ul>
