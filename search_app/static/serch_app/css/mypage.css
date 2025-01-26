@@ -1,0 +1,112 @@
+.main{
+    width: 80vw;
+    background-color: rgba(169, 169, 169, 0.238);
+    margin: 10vh auto;
+    padding: 5vw 4vw 3vh;
+    min-height: 35vh;
+
+}
+
+.pagename{
+    text-align: center;
+    font-size: 6vh;
+    font-family: 'Academy Engraved LET', serif;
+}
+
+.purchase-history{
+    margin-bottom: 5vh;
+    display: grid;
+    background-color: rgb(250, 250, 250);
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* 自動で4列表示 */
+    gap: 4vh; /* アイテム間の隙間 */
+    
+}
+
+.product {
+    max-height: 36vh;
+    max-width: 18vw;
+    border: solid gray 1px;
+    text-align: center;
+    overflow: hidden;
+    margin: 1vh;
+}
+.product:hover {
+    opacity: 0.8;
+    box-shadow: 0.5vh 0.5vh 10px rgba(128, 128, 128, 0.512);
+}
+
+.img_box{
+    background-color: rgb(240, 240, 240);
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 縦横比を1:1に設定 */
+    height: 80%;
+    align-items: center;
+    border-bottom: solid gray 1px;
+    position: relative;
+}
+.product_img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;      
+    margin: auto;
+    /* object-fit: cover; */
+}
+.product_name, .product_price{
+    font-size: 2vh;
+    height: 10%;
+    padding: 0.5vh 0;
+    white-space: nowrap; /* テキストを折り返さない */
+    overflow: hidden;    /* はみ出た部分を非表示に */
+    text-overflow: ellipsis;
+    background-color: white;
+}
+
+.empty_box{
+    position: absolute;
+    top: 30vh; /* 親要素の50%の位置 */
+    left: 50%; /* 親要素の50%の位置 */
+    transform: translate(-50%, -50%); 
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    font-size: 2.5vh;
+    margin: 5vh auto;
+}
+.empty_li{
+    display: block;
+    width: 15vw;
+    height: 6vh;
+    margin: auto;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+    font-size: 3vh;
+    border: black solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.empty_li:hover{
+    color: white;
+    background-color: black;
+}
+
+/* Sold out オーバーレイ */
+.sold-out-overlay {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 40%;
+    height: 25%;
+    background-color: rgb(255, 0, 0);  /* 半透明の背景 */
+    display: flex;
+    justify-content: space-around; /* 左寄せ */
+    align-items: flex-end;
+    color: white;
+    font-size: 1.5vh;
+    font-weight: bold;
+    transform: rotate(-45deg); 
+    transform-origin: left bottom;
+    text-align: center;
+}

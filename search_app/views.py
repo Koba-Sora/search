@@ -7,6 +7,7 @@ from django.http import JsonResponse
 import json  
 from django.db import transaction
 from django.contrib import messages
+from collections import defaultdict
 
 def index(request):
     form = SearchForm(request.GET or None)
@@ -277,6 +278,30 @@ def purchase_complete(request):
     return render(request, 'complete.html')
 
 @login_required
-def purchase_history(request):
+def mypage(request):
     purchases = PurchaseHistory.objects.filter(user=request.user).order_by('-purchase_date')
-    return render(request, 'purchase_history.html', {'purchases': purchases})
+
+    # 購入履歴を「年月日 時刻」でグループ化
+    grouped_by_datetime = defaultdict(list)
+
+    for history in purchases:
+        # 購入日時を「年月日 時刻」形式で取得
+        datetime_group = history.purchase_date.strftime("%Y-%m-%d %H:%M:%S")
+        grouped_by_datetime[datetime_group].append(history)
+
+    # defaultdictを普通のdictに変換
+    grouped_by_datetime = dict(grouped_by_datetime)
+    
+    # ページネーション設定
+    grouped_items = list(grouped_by_datetime.items())  # グループ化されたデータをリストに変換
+    paginator = Paginator(grouped_items, 10)  # 1ページに10件表示
+    page_number = request.GET.get('page')  # ページ番号を取得
+    page_obj = paginator.get_page(page_number)  # ページオブジェクト # ページオブジェクト
+
+    # コンテキストにページネーション情報を渡す
+    context = {
+        'grouped_by_datetime': grouped_by_datetime,  # グループ化されたデータ
+        'page_obj': page_obj,  # 購入履歴のページネーション情報
+    }
+
+    return render(request, 'mypage.html' ,context)

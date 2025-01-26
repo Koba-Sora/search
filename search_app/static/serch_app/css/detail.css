@@ -1,6 +1,6 @@
 body{
     margin: 13vh auto;
-    overflow: hidden;
+    /* overflow: hidden; */
     
 }
 .detail{
@@ -108,7 +108,7 @@ body{
 }
 .card-text{
     margin: 2vh;
-    font-size: vh;
+    /* font-size: vh; */
 
 }
 .text_title{
@@ -274,4 +274,156 @@ animation: slide-out 0.5s ease-in-out forwards; /* スライドアウトアニ�
     transform: rotate(-45deg); /* 斜めに傾ける（-45度の回転） */
     transform-origin: left bottom;
     text-align: center;
+}
+@media screen and (max-width: 1024px) {
+    .detail{
+        display: block;
+        height: auto;
+    }
+    .left_box{
+        display: flex;
+        width: 100%;
+    }
+    .rigth_box{
+        width: 100%;
+    }
+    .card-title{
+        font-size: 30px;
+        margin-left: 4vw;
+        margin-top: 1vh;
+        margin-bottom: 1.5vh;
+    }
+    .return_btn{
+        bottom: 3vh;
+        border: solid 0.5px rgb(10, 10, 10) ;
+        background-color:rgb(250, 250, 250) ;
+        /* border-radius: 5px; */
+        box-shadow: rgb(128, 128, 128,0.5) 1px 1px;
+        position: static;
+        display: block;
+        margin-left: 50%;
+        margin-top: 40px;
+        font-size: 22px;
+
+    }
+    .card-text{
+        font-size: 25px;
+        margin: 0 auto;
+    }
+    .text_title{
+        margin: 2vh 4vw 1vh;
+        font-size: 25px;
+
+    }
+    .card-explain {
+        min-height: 13vh;
+        font-size: 16px;
+    }
+    .top_btn {
+        width: 30vw;
+        top: 7vh;
+        right: 10vw;
+        height: 2vh;
+
+    }
+    .top_btn a, .top_btn form {
+        font-size: 18px;
+    }
+    .sold-out-overlay {
+        font-size: 20px;
+    }
+    body{
+        margin-top: 9vh;
+        margin-bottom: 8vh;
+    }
+
+}
+@media screen and (max-width: 768px) {
+    .detail{
+        display: block;
+        height: auto;
+    }
+    .left_box{
+        display: flex;
+        width: 100%;
+    }
+    .rigth_box{
+        width: 100%;
+    }
+    .card-title{
+        font-size: 25px;
+        margin-left: 4vw;
+        margin-top: 1vh;
+        margin-bottom: 1.5vh;
+    }
+    .return_btn{
+        bottom: 3vh;
+        border: solid 0.5px rgb(10, 10, 10) ;
+        background-color:rgb(250, 250, 250) ;
+        /* border-radius: 5px; */
+        box-shadow: rgb(128, 128, 128,0.5) 1px 1px;
+        position: static;
+        display: block;
+        margin-left: 50%;
+        margin-top: 40px;
+
+
+    }
+    .card-text{
+        font-size: 18px;
+        margin: 0 auto;
+    }
+    .text_title{
+        margin: 1vh 4vw;
+        font-size: 18px;
+
+    }
+    .card-explain {
+        min-height: 15vh;
+        font-size: 16px;
+    }
+    .top_btn {
+        width: 40vw;
+        top: 11vh;
+        right: 10vw;
+        height: 3vh;
+
+    }
+    .top_btn a, .top_btn form {
+        font-size: 18px;
+    }
+    .sold-out-overlay {
+        font-size: 15px;
+    }
+    body{
+        margin-bottom: 8vh;
+        margin-top: 14vh;
+
+    }
+    #notification-bar {
+        top:10vh;
+    }
+    /* スライドインのアニメーション */
+    @keyframes slide-in {
+        0% {
+            top: -50px; /* 通知バーが画面の外から */
+            opacity: 0;
+        }
+        100% {
+            top: 9vh; /* 通知バーが指定位置に */
+            opacity: 1;
+        }
+        }
+        /* スライドアウトのアニメーション */
+    @keyframes slide-out {
+        0% {
+            top: 9vh;
+            opacity: 1;
+        }
+        100% {
+            top: -50px; /* 通知バーが画面の外へ */
+            opacity: 0;
+        }
+        }
+
 }

@@ -32,3 +32,27 @@ body{
 .serach:hover{
     border-bottom: black solid 1px;
 }
+@media screen and (max-width: 1024px) {
+    .main-text {
+        font-size: 50px;
+        margin: 2vh;
+        display: block;
+    }
+    .serach {
+        padding: 6px 10px;
+        border: 0.5px solid black;
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .main-text {
+        font-size: 18px;
+        margin: 2vh;
+        display: block;
+    }
+    .serach {
+        padding: 2px 6px;
+        border: 0.5px solid black;
+        font-size: 16px;
+    }
+}

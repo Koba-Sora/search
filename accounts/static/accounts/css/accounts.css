@@ -122,3 +122,65 @@
     right: 18vw;
     z-index: -1;
 }
+
+@media screen and (max-width: 1024px) {
+    .accounts-login,.accounts-singup{
+        font-size: 70px;
+        top: 24vh;
+        left: 15vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .square_center{
+        width: 90%;
+        top: 50%;
+        height: 40vh;
+    }
+    #menu {
+        width: 90%;
+        top: 50vh;
+        height: 40vh;
+    }
+    .div_in_btn {
+        margin: 0vh;
+        padding-top: 4vh;
+
+
+    }
+    .accounts-login,.accounts-singup{
+        font-size: 50px;
+        top: 25vh;
+        left: 15vw;
+    }
+
+    .square_2{
+        height: 30%;
+        top: 18vh;
+        left: 0vw;
+        width: 75%;
+    }
+    .square_3{
+        width: 40vw;
+        height: 28vh;
+    }
+    .square_4{
+        width: 80vw;
+        height: 20vh;
+        left: 0vw;
+    }
+    .square_5{
+        width: 26vw;
+        height: 26vw;
+        right: 7vw;
+        bottom: 15vh;
+    }
+    .accounts_form{
+        background-color: black;
+        height: auto;
+        width: 90vw;
+        position: relative;
+        top: -0.5vh;
+        left: -0.5vw;
+    }
+}

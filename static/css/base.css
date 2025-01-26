@@ -1,6 +1,7 @@
 body {
     font-family: "Ten Mincho", serif;
     /* margin: 0; */
+    background-color: rgb(250, 250, 250);
 }
 
 header {
@@ -108,6 +109,7 @@ header {
 }
 
 #menu form {
+    
     position: relative;
     width: 80%;
     height: 90%;
@@ -139,8 +141,8 @@ form .search_contents input{
 }
 form .search_contents label{
     display: inline-block;
-    width: 40%;
-    padding-left: 10%;
+    width: 45%;
+    padding-left: 5%;
 }
 #menu form button {
     padding: 1vh;
@@ -166,4 +168,51 @@ footer p{
     font-size: 2vh;
     padding: 0.5vh;
 
+}
+
+@media screen and (max-width: 1024px) {
+    .header_rigth {
+        width: 65%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .header_img{
+        display: inline-block;
+        height: 4vh;
+        width: 4vh;
+        /* margin-top: 0; */
+    }
+    .header_homes {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #menu {
+        width: 90%;
+        top: 50vh;
+        height: auto;
+    }
+    #menu form {
+        padding: 3vh 2vw 3vh;
+    }
+    header {
+        height: 9vh;
+    }
+    .header_rigth {
+        width: 50%;
+        max-width: 250px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end; 
+    }
+    .header_img{
+        display: inline-block;
+        height: 4vh;
+        width: 4vh;
+        margin-top: 0;
+    }
+    .header_homes {
+        margin: 0;
+    }
 }

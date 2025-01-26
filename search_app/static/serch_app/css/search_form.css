@@ -10,7 +10,6 @@
 }
 .product_custom{
     width: 80vw;
-
     margin: auto;
     border: solid black 1px;
     margin-bottom: 25vh;
@@ -90,4 +89,59 @@
     background-color: black;
     color: white;
     /* opacity: 0.1; */
+}
+@media screen and (max-width: 1024px) {
+    .product_custom form{
+        display: block;
+    }
+    .page_name {
+        margin-top: 12vh;
+        font-size: 5vh;
+    }
+    .left, .rigth{
+        width: 100%;
+    }
+    .form-group label, .img-group .inner_label {
+        font-size: 14px;
+    }
+    .img-group{
+        display: flex;
+    }
+    .inner_label{
+        width: 30%;
+    }
+    .img-label{
+        width: 70%;
+    }
+    .product_custom{
+        margin-bottom: 15vh;
+    }
+
+}
+@media screen and (max-width: 768px) {
+    .product_custom form{
+        display: block;
+    }
+    .page_name {
+        margin-top: 12vh;
+        font-size: 4vh;
+    }
+    .left, .rigth{
+        width: 100%;
+    }
+    .form-group label, .img-group .inner_label {
+        font-size: 14px;
+    }
+    .img-group{
+        display: flex;
+    }
+    .inner_label{
+        width: 30%;
+    }
+    .img-label{
+        width: 70%;
+    }
+    .product_custom{
+        margin-bottom: 15vh;
+    }
 }

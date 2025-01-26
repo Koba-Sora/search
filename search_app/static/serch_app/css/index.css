@@ -3,12 +3,12 @@
 }
 
 .homes-section{
-    position: fixed;
-    height: 100vh;
+    /* position: fixed; */
+    height: 97vh;
     width: 100vw;
     top: 0%;
     left: 0%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .square_center{
@@ -23,7 +23,7 @@
     z-index: 50;
 }
 #menu {
-    top: 55vh; /* index画面では通常より少し高めに設定 */
+    top: 55vh; 
 }
 .index-home{
     font-size: 6vw;
@@ -42,7 +42,6 @@
     left: 28vw;
     font-family: 'Academy Engraved LET', serif;
 }
-
 
 .bottons{
     display: flex;
@@ -91,8 +90,8 @@
     top: 15vh;
     left: 5vw;
     z-index: 10;
-
 }
+
 .square_3{
     width: 40vw;
     height: 40vh;
@@ -101,7 +100,7 @@
     position: absolute;
     top: 0vh;
     right: 0vw;
-    z-index: 1;
+    z-index: -1;
 
 }
 .square_4{
@@ -124,4 +123,77 @@
     bottom: 10vh;
     right: 18vw;
     z-index: -1;
+}
+.container{
+    position: absolute;
+    bottom: 8vh;
+    left: 2vw;
+}
+
+@media screen and (max-width: 1024px) {
+    .container{
+        position: absolute;
+        top: 90vh;
+        left: 2vw;
+    }
+    .index-home{
+        font-size: 80px;
+        top: 24vh;
+        left: 15vw;
+    }
+    .index-search{
+        font-size: 80px;
+        top: 24vh;
+        left: 15vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .square_center{
+        width: 90%;
+        top: 50%;
+        height: 40vh;
+    }
+    #menu {
+
+        top: 50vh;
+    }
+    .div_in_btn {
+        margin: 0vh;
+        padding-top: 4vh;
+        font-size: 45px;
+
+    }
+    .index-home{
+        font-size: 50px;
+        top: 20vh;
+        left: 15vw;
+    }
+    .index-search{
+        font-size: 50px;
+        top: 20vh;
+        left: 15vw;
+    }
+    .square_2{
+        height: 30%;
+        top: 18vh;
+        left: 0vw;
+        width: 75%;
+    }
+    .square_3{
+        width: 40vw;
+        height: 28vh;
+    }
+    .square_4{
+        width: 80vw;
+        height: 20vh;
+        left: 0vw;
+    }
+    .square_5{
+        width: 26vw;
+        height: 26vw;
+        right: 7vw;
+        bottom: 15vh;
+    }
+
 }

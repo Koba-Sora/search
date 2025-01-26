@@ -48,7 +48,7 @@
     text-overflow: ellipsis;
 }
 .img_box{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(240, 240, 240);
     width: 100%;
     max-height: 85%;
     aspect-ratio: 1 / 1; /* 縦横比を1:1に設定 */
@@ -129,4 +129,78 @@
     transform-origin: left bottom;
     text-align: center;
     white-space: nowrap;
+}
+@media screen and (max-width: 1024px) {
+    .search_result {
+        margin: 10vh 10vw 12vh;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+        gap: 2vh;
+        color: black;
+    }
+    .left_page {
+        position: absolute;
+        left: 20vw; /* 左に30% */
+        top: 50%;  /* 画面の下から50%の位置 */
+        transform: translateY(-50%); /* 位置を中央に調整 */
+    }
+    
+    .ligth_page {
+        position: absolute;
+        right: 20vw; /* 右に30% */
+        top: 50%;  /* 画面の下から50%の位置 */
+        transform: translateY(-50%); /* 位置を中央に調整 */
+    }
+    .sold-out-text {
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .pagination {
+        width: 100vw;  /* 画面幅に対して100% */
+        height: 6vh;   /* 高さを画面高さに対して指定 */
+        font-size: 16px; /* フォントサイズを高さに対して指定 */
+        padding-top: 1.2vh;
+        border-top: gray solid 1px;
+        position: fixed;
+        left: 0;
+        bottom: 3vh; /* 画面の下部から3vhの位置 */
+        display: flex;
+    }
+    
+    .current {
+        width: 13vw;    /* 画面幅に対して10% */
+        font-size: 16px; /* フォントサイズを高さに対して指定 */
+        margin: auto;
+        margin-top: 0.5vh;
+        height: 100%;
+        padding-top: 0.2vh;
+        padding-bottom: 0.2vh;
+        top: 50%;  /* 画面の下から50%の位置 */
+        transform: translateY(-50%); /* 位置を中央に調整 */
+        text-align: center;
+    }
+    
+    .left_page {
+        position: absolute;
+        left: 10vw; /* 左に30% */
+        top: 50%;  /* 画面の下から50%の位置 */
+        transform: translateY(-50%); /* 位置を中央に調整 */
+    }
+    
+    .ligth_page {
+        position: absolute;
+        right: 10vw; /* 右に30% */
+        top: 50%;  /* 画面の下から50%の位置 */
+        transform: translateY(-50%); /* 位置を中央に調整 */
+    }
+    .search_result {
+        margin: 12vh 10vw 12vh;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(35%, 1fr));
+        gap: 2vh;
+
+    }
+
+    
 }

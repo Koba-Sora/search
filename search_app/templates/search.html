@@ -61,7 +61,7 @@
                 </div>
             {% endif %}
             <span class="current">
-                ページ {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+                {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
             </span>
 
             {% if page_obj.has_next %}

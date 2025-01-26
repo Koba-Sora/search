@@ -68,7 +68,7 @@ ul{
 }
 
 .img_box{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(240, 240, 240);
     width: 100%;
     aspect-ratio: 1 / 1; /* 縦横比を1:1に設定 */
     align-items: center;
@@ -274,4 +274,139 @@ animation: slide-out 0.5s ease-in-out forwards; /* スライドアウトアニ�
 .btn-primary:hover{
     background-color: black;
     color: white;
+}
+@media screen and (max-width: 1024px) {
+    .pagename {
+        font-size: 2.5vh;
+    }
+    .main{
+        margin-top: 13vh;
+        min-height: 20vh;
+        margin-bottom: 5vh;
+    }
+    .empty_box {
+        top:20vh;
+        font-size: 18px;
+    }
+    .empty_li {
+        font-size: 18px;
+        width: 140px;
+        height: 50px;
+
+    }
+    ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+        gap: 1vh;
+    }
+    .btn-left_form{
+        width: 80%;
+    }
+    .btn-rigth{
+        width: 20%;
+        height: 40px;
+    }
+    .btn-left {
+        font-size: 15px;
+        height: 40px;
+    }
+    .like_img{
+        height: 60%;
+    }
+    .sold-out-text {
+        font-size: 12px;
+    }
+    .total-prices{
+        display: flex;
+        width: 150px;
+        font-size: 14px;
+        margin-bottom: 2vh;
+        margin-left: 40%;
+        justify-content: space-between;
+    }
+    .btn-primary {
+        width: 100px;
+        font-size: 18px;
+        border: solid black 0.5px;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 768px) {
+    .pagename {
+        font-size: 25px;
+    }
+    .main{
+        margin-top: 13vh;
+        min-height: 20vh;
+        margin-bottom: 5vh;
+    }
+    .empty_box {
+        top:20vh;
+        font-size: 18px;
+    }
+    .empty_li {
+        font-size: 18px;
+        width: 140px;
+        height: 50px;
+
+    }
+    ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+        gap: 2vh;
+    }
+    .btn-left_form{
+        width: 80%;
+    }
+    .btn-rigth{
+        width: 20%;
+    }
+    .btn-left {
+        font-size: 15px;
+    }
+    .like_img{
+        height: 60%;
+    }
+    #notification-bar {
+        top:10vh;
+    }
+    /* スライドインのアニメーション */
+    @keyframes slide-in {
+        0% {
+            top: -50px; /* 通知バーが画面の外から */
+            opacity: 0;
+        }
+        100% {
+            top: 9vh; /* 通知バーが指定位置に */
+            opacity: 1;
+        }
+        }
+        /* スライドアウトのアニメーション */
+    @keyframes slide-out {
+        0% {
+            top: 9vh;
+            opacity: 1;
+        }
+        100% {
+            top: -50px; /* 通知バーが画面の外へ */
+            opacity: 0;
+        }
+        }
+    .sold-out-overlay {
+        font-size: 8px;
+    }
+    .total-prices{
+        display: flex;
+        width: 150px;
+        font-size: 14px;
+        margin-bottom: 2vh;
+        margin-left: 40%;
+        justify-content: space-between;
+    }
+    .btn-primary {
+        width: 100px;
+        font-size: 18px;
+        border: solid black 0.5px;
+        text-align: center;
+    }
 }
